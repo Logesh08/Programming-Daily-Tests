@@ -59,3 +59,15 @@
 
 
 
+s=input().strip()
+n=int(input())
+l=[input().strip() for i in range(n)]
+for i in range(len(s)):
+    f=0
+    for j in range(n):
+        if l[j][len(l[j])//2].lower()==s[i].lower():
+            print(l[j])
+            f=1 
+            break 
+    if f==0:
+        print('*'*(len(l[0])//2)+s[i]+'*'*(len(l[0])//2))
