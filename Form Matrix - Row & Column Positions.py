@@ -36,3 +36,27 @@
 # a b c
 # d e f
 # x y z
+
+
+
+
+
+l=list(input().split())
+r=[]
+c=[]
+x=[]
+for i in l:
+    t=""
+    for j in i:
+        if j in "1234567890":
+            t+=j
+            i=i[1:]
+        else:
+            r.append(int(t))
+            c.append(int(i[1:]))
+            x.append(i[0])
+o=[["" for b in range(max(c))] for a in range(max(r))]
+for i in zip(r,c,x):
+    o[i[0]-1][i[1]-1]=i[2]
+for i in o:
+    print(*i)
