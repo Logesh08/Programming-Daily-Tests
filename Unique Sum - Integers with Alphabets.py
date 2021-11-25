@@ -36,3 +36,22 @@
 
 # Output:
 # 19641
+
+
+
+
+n=int(input())
+a=input().split()
+m=[]
+for i in range(n):
+    d=""
+    al=""
+    for j in a[i]:
+        if j.isdigit():
+            d+=j
+        else:
+            al+=j
+    k=[int(d),al]
+    if k not in m:
+        m.append(k)
+print(sum([i[0] for i in m]))
