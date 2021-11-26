@@ -59,3 +59,15 @@
 
 
 
+N = int(input())
+start = 2*(N-1)
+for ctr in range(N-1):
+    stars = ["-"]*(2*(ctr+1)-1)
+    stars[0] = "*"
+    stars[-1] = "*"
+    stars[len(stars)//2] = "*"
+    print("-"*start+'-'.join(stars))
+    start -= 2
+lastCtr = 2*N-1
+last = ["*"]*lastCtr
+print('-'.join(last))
