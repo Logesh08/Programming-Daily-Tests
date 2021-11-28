@@ -41,3 +41,11 @@
 
 
 
+keyMap = {"1":[0,0],"2":[0,1],"3":[0,2],"4":[1,0],"5":[1,1],"6":[1,2],"7":[2,0],"8":[2,1],"9":[2,2]}
+digs = list(input())
+result = 0
+for index in range(len(digs)-1):
+    xDis = abs(keyMap[digs[index]][0] - keyMap[digs[index+1]][0])
+    yDis = abs(keyMap[digs[index]][1] - keyMap[digs[index+1]][1])
+    result += max(xDis,yDis)
+print(result)
