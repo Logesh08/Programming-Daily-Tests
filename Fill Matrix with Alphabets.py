@@ -56,3 +56,27 @@
 
 
 
+
+r,c=map(int,input().split())
+mat=[input().split() for i in range(r)]
+chrr=input()
+s,e=chrr,chrr
+for row in mat:
+    for val in row:
+        if val=='0':
+            print(e,end=' ')
+            if e=='a':
+                e='z'
+            elif e=='A':
+                e='Z'
+            else:
+                e=chr(ord(e)-1)
+        else:
+            print(s,end=' ')
+            if s=='z':
+                s='a'
+            elif s=='Z':
+                s='A'
+            else:
+                s=chr(ord(s)+1)
+    print()
