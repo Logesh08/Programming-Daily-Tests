@@ -33,5 +33,22 @@
 
 
 
-
+#include <stdio.h>
+#include <stdlib.h>
+int findDigitsBitMask(long long int N) {
+    
+    int ans = 0;
+    
+    while (ans |= 1 << (N % 10), N /= 10);
+    
+    return ans;
+    
+}
+int main()
+{
+    long long int N;
+    scanf("%lld", &N);
+    printf("%d", findDigitsBitMask(N));
+    return 0;
+}
 
