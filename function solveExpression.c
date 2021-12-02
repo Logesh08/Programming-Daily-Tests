@@ -47,3 +47,46 @@
 
 
 
+#include <stdio.h>
+#include <stdlib.h>
+int solveExpression(char *expression)
+{
+    int num1=0,num2=0,flag=0;
+    char ch;
+    for(int index=0;expression[index];index++){
+        if(index>0 && isdigit(expression[index-1]) && !isdigit(expression[index])){
+            flag=1;
+        }
+        if(isdigit(expression[index]) && flag==0){
+            num1=(num1*10)+(expression[index]-'0');
+        }
+        else if(isdigit(expression[index]) && flag){
+            num2=(num2*10)+(expression[index]-'0');
+        }
+        else if(expression[index]!='X' && expression[index]!='='){
+            ch=expression[index];
+        }
+    }
+    int len=strlen(expression);
+    if(expression[len-2]=='=' && expression[len-1]=='X'){
+        if(ch=='+'){
+            return num2+num1;
+        }
+        else{
+            return num1*num2;
+        }
+    }
+    if(ch=='+'){
+        return num2-num1;
+    }
+    else{
+        return num2/num1;
+    }
+}
+int main()
+{
+    char expression[51];
+    scanf("%s", expression);
+    printf("%d", solveExpression(expression));
+    return 0;
+}
