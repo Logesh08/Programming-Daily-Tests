@@ -56,3 +56,16 @@
 
 
 
+s=input().strip()
+x=0 
+for i in s:
+    x+=int(i) 
+m=int(max(list(s))) 
+l=[['-']*x for i in range(m)] 
+k=0
+for i in s:
+    for j in range(int(i)):
+        l[int(i)-1][k+j]='*' 
+    k+=int(i) 
+for i in l[::-1]:
+    print(*i,sep="")
