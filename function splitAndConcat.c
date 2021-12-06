@@ -41,3 +41,42 @@
 
 
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+char* splitAndConcat(char *str)
+{
+    char *newone = malloc(sizeof(char)*strlen(str));
+    int t = 0;
+    char *tok = strtok(str," ");
+    while(tok){
+        int Len = strlen(tok)/2;
+        for(int i = 0;i<Len;i++){
+            newone[t++] = tok[i];
+        }
+        newone[t++] = ' ';
+        for(int j = Len;j<strlen(tok);j++){
+            newone[t++] = tok[j];
+        }
+        tok = strtok(NULL," ");
+    }
+    newone[t] = '\0';
+    return newone;
+
+}
+int main()
+{
+    char str[101];
+    scanf("%[^\n]", str);
+    char *result = splitAndConcat(str);
+    if(result == str || result == NULL)
+    {
+        printf("String is not formed\n");
+    }
+    if(result[0] == '\0' || result[0] == ' ')
+    {
+        printf("String is empty\n");
+    }
+    printf("%s", result);
+    return 0;
+}
