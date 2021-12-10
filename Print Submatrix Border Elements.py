@@ -52,3 +52,26 @@
 
 # Output:
 # 25 32 16 50 31 27 14 47 35 18 10 39 48 38 19 36
+
+
+
+
+
+
+
+
+
+
+
+
+a,b=map(int,input().split())
+l=[list(map(int,input().split())) for i in range(a)]
+x,y=[int(i)-1 for i in input().split()]
+for i in range(y,b):
+    print(l[x][i],end=' ')
+for i in range(x+1,a):
+    print(l[i][-1],end=' ')
+for i in range(b-2,y-1,-1):
+    print(l[-1][i],end=' ')
+for i in range(a-2,x,-1):
+    print(l[i][y],end=' ')
