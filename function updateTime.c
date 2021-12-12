@@ -54,3 +54,33 @@
 
 
 
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Time
+{
+    int hours;
+    int minutes;
+    int seconds;
+};
+#include<string.h>
+void updateTime(struct Time *time, char *str){
+    char ch; int aki; sscanf(str,"%d%c",&aki,&ch);
+    if(ch=='s' || ch=='S')time->seconds+=aki;
+    else if(ch=='m' || ch=='M')time->minutes+=aki;
+    else time->hours+=aki;
+    if(time->seconds>=60){ 
+        time->minutes+=time->seconds/60; time->seconds%=60; }
+    if(time->minutes>=60){
+        time->hours+=time->minutes/60; time->minutes%=60;} 
+    if(time->hours>=24){time->hours%=24;}}//F?HRER
+int main()
+{
+    char str[11];
+    struct Time time;
+    scanf("%d:%d:%d\n", &time.hours, &time.minutes, &time.seconds);
+    scanf("%s", str);
+    updateTime(&time, str);
+    printf("%02d:%02d:%02d", time.hours, time.minutes, time.seconds);
+    return 0;
+}
