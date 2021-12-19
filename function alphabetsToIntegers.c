@@ -46,31 +46,25 @@ typedef struct BoundedArray
     int SIZE;
     int *arr;
 } boundedArray;
-#include<string.h>
 boundedArray* alphabetsToIntegers(char *str)
 {
-    boundedArray *ptr =  malloc(10000001);
-    ptr->arr = malloc(10000001);
-    int i=0,len=strlen(str),ind=0;
-    char *token = strtok(str," ");
-    while(token){
-        char temp[10];
-        i=0;
-        if(token[i]=='-'){
-            temp[i]='-';
-            i+=1;
+    boundedArray *ans = (boundedArray *)malloc(sizeof(boundedArray));
+    ans->arr= (int*)malloc(sizeof(int)*1001);
+    int num = 0, neg = 1;
+    for(int i=0; i<=strlen(str); i++){
+        if(str[i]==' ' || str[i]=='\0'){
+            ans->arr[ans->SIZE++] = neg*num;
+            num = 0;
+            neg =1;
+        }else{
+            if(str[i]=='-'){
+                neg = -1;
+            }else{
+                num = num*10+str[i]-'a';
+            }
         }
-        while(token[i]!='\0'){
-            int x = token[i]-97;
-            // printf("%d ",x);
-            sprintf(temp,"%s%d",temp,x);
-            i++;
-        }
-        ptr->arr[ind++]=atoi(temp);
-        token = strtok(NULL," ");
     }
-    ptr->SIZE = ind;
-    return ptr;
+    return ans;
 }
 int main()
 {
