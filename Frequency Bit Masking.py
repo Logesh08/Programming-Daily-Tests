@@ -41,3 +41,22 @@
 # Output:
 # 396549
 # 3072
+
+
+
+
+
+
+
+
+
+s=list(input().strip())
+while s:
+    x=""
+    for i in "abcdefghijklmnopqrstuvwxyz"[::-1]:
+        if i in s:
+            s.remove(i)
+            x+="1" 
+        else:
+            x+="0"
+    print(int(x,2))
