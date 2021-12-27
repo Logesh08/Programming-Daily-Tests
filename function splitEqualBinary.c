@@ -44,3 +44,36 @@
 
 
 
+#include <stdio.h>
+#include <stdlib.h>
+int splitEqualBinary(int N)
+{
+int t,a[10000],x=0,i,s=0;
+t=N;
+while(t>0)
+{
+    a[x++]=t%2;
+    t/=2;
+}
+for(i=0;i<x/2;i++)
+{
+    if(a[i]!=a[x/2+i])
+    return N;
+}
+for(i=0;i<x/2;i++)
+{
+    if(a[i]==1)
+    {
+        s=s+pow(2,i);
+    }
+}
+return s+s;
+
+}
+int main()
+{
+    int N;
+    scanf("%d", &N);
+    printf("%d", splitEqualBinary(N));
+    return 0;
+}
