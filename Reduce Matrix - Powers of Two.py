@@ -63,3 +63,24 @@
 # 18 23
 # 24 11
 # 76
+
+
+
+
+
+
+
+
+
+
+N = int(input())
+L = [list(map(int, input().split())) for i in range(N)]
+while N != 1:
+    NN = N // 2
+    NL = [[0 for i in range(NN)] for j in range(NN)]
+    for i in range(N):
+        for j in range(N):
+            NL[i//2][j//2] += L[i][j]
+    [print(*i) for i in NL]
+    L = NL.copy()
+    N = NN
