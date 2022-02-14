@@ -55,3 +55,38 @@
 # 33 32 31 63 62 61 55 56
 # 32 31 65 64 63 62 61 57
 # 31 67 66 65 64 63 62 61
+
+
+
+
+
+
+
+
+
+
+
+
+l1=list(map(int,input().split())) 
+n=int(input()) 
+l=[[0]*n for i in range(n)]
+for k in range(n//2):
+    r,c=n-k,n-k 
+    k1=l1[0]
+    for i in range(k,n-k-1):
+        l[k][i]=k1
+        k1+=1
+    k1=l1[1]
+    for i in range(k,n-k-1):
+        l[i][n-k-1]=k1 
+        k1+=1 
+    k1=l1[2]
+    for i in range(n-k-1,k,-1):
+        l[n-k-1][i]=k1 
+        k1+=1 
+    k1=l1[3]
+    for i in range(n-k-1,k,-1):
+        l[i][k]=k1 
+        k1+=1 
+for i in l:
+    print(*i)
