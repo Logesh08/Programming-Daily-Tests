@@ -70,12 +70,10 @@ arr = [input().strip() for i in range(n)]
 find = [input().strip()]
 decndent = 0
 while find:
-    flag = False
     for i in arr:
         a , b = i.split()
         if b == find[0]:
             decndent+=1
             find.append(a)
-            flag = True
     find.pop(0)
 print(decndent+1)
