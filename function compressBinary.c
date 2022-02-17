@@ -35,3 +35,42 @@
 // After compressing the binary representation of 2506, the binary representation becomes 10301010.
 // 100111001010 -> (1)(0+0)(1+1+1)(0+0)(1)(0)(1)(0) -> 10301010
 // Hence 10301010 is printed as the output.
+
+
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+long long int compressBinary(int N)
+{
+    int binary[101],binInd=0;
+    while(N>0){
+        binary[binInd++]=N%2;
+        N/=2;
+    }
+    char *num=malloc(1001);
+    char numStr[101];
+    int curr=binary[binInd-1];
+    for(int index=binInd-2;index>=0;index--){
+        if(binary[index]==binary[index+1]){
+            curr+=binary[index];
+        }
+        else{
+            sprintf(numStr,"%d",curr);
+            strcat(num,numStr);
+            curr=binary[index];
+        }
+    }
+    sprintf(numStr,"%d",curr);
+    strcat(num,numStr);
+    return atol(num);
+}
+int main()
+{
+    int N;
+    scanf("%d", &N);
+    printf("%lld", compressBinary(N));
+    return 0;
+}
