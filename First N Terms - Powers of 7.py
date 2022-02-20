@@ -32,3 +32,21 @@
 
 # Output:
 # 1 7 8 49 50 56 57 343 344 350
+
+
+
+
+
+
+
+
+
+
+n=int(input())
+l=[];c=0
+while len(l)<n:
+    s=7**c;k=[s]
+    for j in range(len(l)):
+        k.append(s+l[j])
+    l+=k;c+=1
+print(*sorted(l)[:n])
