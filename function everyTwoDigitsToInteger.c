@@ -37,3 +37,80 @@
 // 3rd integer: 10 (1 to 0).
 // 4th integer: 0123456789 -> 123456789 (0 to 9).
 // 9876543210 + 1 + 10 + 123456789 = 10000000010.
+
+
+
+
+
+
+
+// as int
+#include <stdio.h>
+#include <stdlib.h>
+long long int everyTwoDigitsToInteger(int N)
+{
+    long long int ans=0, pre=N%10;
+    N/=10;
+    while(N){
+        long long int val=0, curr=N%10;
+        N/=10;
+        if(curr<pre){
+            for(int i=curr; i<=pre; i++){
+                val=val*10+i;
+            }
+        }else{
+            for(int i=curr; i>=pre; i--){
+                val = val*10+i;
+            }
+        }
+        ans+=val;
+        pre=curr;
+    }
+    return ans;
+}
+int main()
+{
+    int N;
+    scanf("%d", &N);
+    printf("%lld", everyTwoDigitsToInteger(N));
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+// as string
+#include <stdio.h>
+#include <stdlib.h>
+long long int everyTwoDigitsToInteger(int N)
+{
+    long long int resultNum=0;
+    char num[1001];
+    sprintf(num,"%d",N);
+    for(int ctr=0;ctr<strlen(num)-1;ctr++)
+    {
+        int num1=num[ctr]-'0',num2=num[ctr+1]-'0';
+        long long int currNum=0;
+        int inc=(num1<num2)?1:-1;
+        while(num1!=num2)
+        {
+            currNum=currNum*10+num1;
+            num1+=inc;
+        }
+        currNum=currNum*10+num1;
+        resultNum+=currNum;
+    }
+    return resultNum;
+}
+int main()
+{
+    int N;
+    scanf("%d", &N);
+    printf("%lld", everyTwoDigitsToInteger(N));
+    return 0;
+}
