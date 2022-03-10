@@ -36,3 +36,48 @@
 
 // Output:
 // 11522
+
+
+
+
+
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+void concatAndConvertToOctal(int SIZE, int arr[])
+{
+    int k[10000],l=0;
+    for(int i=SIZE-1;i>=0;i--){
+        int t=arr[i];
+        while(t){
+            k[l++]=t%2;
+            t/=2;
+        }
+    }
+    while(l%3!=0){
+        k[l++]=0;
+    }
+    for(int i=l-1;i>=0;i-=3){
+        int d=0,c=1;
+        for(int j=i-2;j<=i;j++){
+            d+=(c*k[j]);
+            c*=2;
+        }
+        printf("%d",d);
+    }
+}
+int main()
+{
+    int N;
+    scanf("%d", &N);
+    int arr[N];
+    for(int index = 0; index < N; index++)
+    {
+        scanf("%d", &arr[index]);
+    }
+    concatAndConvertToOctal(N, arr);
+    return 0;
+}
