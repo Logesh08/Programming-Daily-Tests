@@ -55,7 +55,7 @@
 
 
 
-
+##worong logic
 n=int(input())
 arr=[]
 total = 1440
@@ -64,4 +64,27 @@ for i in range(n):
     ah,am = map(int,a.split(':'))
     bh,bm = map(int,b.split(':'))
     total-=((abs(bh-ah)*60)+abs(bm-am))
+print(total)
+
+##correct logic
+n=int(input())
+mins=0
+for _ in range(n):
+    s,e=input().split()
+    sh,sm=map(int,s.split(':'))
+    eh,em=map(int,e.split(':'))
+    s=sh*60+sm
+    e=eh*60+em
+    mins+=e-s
+print(24*60-mins)
+
+##correction made
+n=int(input())
+arr=[]
+total = 1440
+for i in range(n):
+    a,b = input().split()
+    ah,am = map(int,a.split(':'))
+    bh,bm = map(int,b.split(':'))
+    total-=((bh*60+bm)-(ah*60+am))
 print(total)
