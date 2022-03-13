@@ -43,3 +43,24 @@
 
 # Explanation:
 # The 2 long pressed keys are O and K.
+
+
+
+
+
+
+a=input().strip() 
+b=input().strip() 
+res=0
+while a: 
+    if(a[0]==b[0]): 
+      a=a[1:] 
+      b=b[1:] 
+    else: 
+        c=b[0]
+        res+=1 
+        while b and b[0]==c: 
+            b=b[1:]
+if b: 
+    res+=1
+print(res)
