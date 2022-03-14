@@ -37,3 +37,74 @@
 
 // Output:
 // 3 5
+
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int* findStartingPosition(int R, int C, char *matrix, char *str)
+{
+    int *ret= (int*)malloc(sizeof(int)*2);
+    int len =strlen(str);
+    char mat[R][C];
+    int x=0;
+    for(int i=0; i<R; i++){
+        for(int j=0; j<C; j++){
+            mat[i][j]=matrix[x++];
+        }
+    }
+    for(int i=0; i<C; i++){
+        for(int j=0; j<R; j++){
+            int ind=0;
+            for(int k=j; k<R; k++){
+                if(mat[k][i]==str[ind]){
+                    ind++;
+                } else{
+                    break;
+                }
+                if(ind==len){
+                    ret[0]=j+1,ret[1]=i+1;
+                    return ret;
+                }
+            }
+            ind=0;
+            for(int k=j; k>=0; k--){
+                if(mat[k][i]==str[ind]){
+                    ind++;
+                }else{
+                    break;
+                }
+                if(ind==len){
+                    ret[0]=j+1;ret[1]=i+1;
+                    return ret;
+                }
+            }
+        }
+    }
+    return ret;
+} // End of findStartingPosition function
+
+int main()
+{
+    int R, C;
+    scanf("%d%d", &R, &C);
+    char matrix[R][C], str[C+1];
+    for(int row = 0; row < R; row++)
+    {
+        for(int col = 0; col < C; col++)
+        {
+            scanf(" %c", &matrix[row][col]);
+        }
+    }
+    scanf("%s", str);
+    int *pos = findStartingPosition(R, C, matrix, str);
+    if(pos == NULL)
+    {
+        printf("Array is not formed\n");
+    }
+    printf("%d %d", pos[0], pos[1]);
+    return 0;
+} // End of main function
