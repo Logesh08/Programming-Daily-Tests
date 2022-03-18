@@ -44,33 +44,32 @@
 #include <stdlib.h>
 #include <string.h>
 char* mergeThreeStringValues(char *str1, char *str2, char *str3)
-{
-    char *merge = malloc(9999999);
-    int i,j=0,k=0,ind=0;
-    merge[ind++]=str1[0];
-    for(i=1;i<strlen(str1);i++){
-        if(str1[i]!=str1[i-1] || i == strlen(str1)-1){
-            merge[ind++] = str2[j++];
-            int bf =0;
-            for(;j<strlen(str2);j++){
-                if(str2[j]!=str2[j-1] || j ==strlen(str2)-1){
-                    merge[ind++] = str3[k++];
-                    for(;k<strlen(str3);k++){
-                        if(str3[k]!=str3[k-1]){
-                            bf=1;
-                            break;
-                        }
-                        merge[ind++] = str3[k];
+{ 
+    int x=0,i,j,y=0,z=0,k=0; 
+    char *t=malloc(sizeof(char)*3005); 
+    for(i=0;i<strlen(str1);i++)  
+    {  
+        t[k++]=str1[i]; 
+        if(str1[i]!=str1[i+1]) 
+        {  
+            for(;y<strlen(str2);y++) 
+            {  
+                t[k++]=str2[y]; 
+                if(str2[y]!=str2[y+1]) 
+                {   
+                    while(str3[z]==str2[y]) 
+                    {  
+                        t[k++]=str3[z++];
                     }
+                    y+=1; 
+                    break;
                 }
-                if(bf) break;
-                merge[ind++] = str2[j];
             }
         }
-        merge[ind++]=str1[i];
-    }
-    for(;k<strlen(str3);k++) merge[ind++] = str3[k];
-    return merge;
+    } 
+    t[k]='\0'; 
+    return t;
+
 }
 int main()
 {
