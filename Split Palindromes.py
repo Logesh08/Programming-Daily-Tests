@@ -41,12 +41,8 @@
 
 
 s=input().strip()
-r = s[::-1]
-for i in range(2,len(s)):
-    x,y = s[:i],s[i-1::-1]
-    if x==y:
-        for j in range(2,len(s)):
-            a,b = r[:j],r[j-1::-1]
-            if a==b:
-                print(s[:i],s[i:],sep='\n')
-                exit()
+for i in range(len(s)):
+    if s[:i]==s[:i][::-1] and s[i:]==s[i:][::-1]:
+        print(s[:i])
+        print(s[i:])
+        quit()
