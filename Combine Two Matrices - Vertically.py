@@ -58,3 +58,45 @@
 # 90 74 20 70 26 74
 
 
+
+
+r,c=map(int,input().split()) 
+m1=[list(map(int,input().split())) for i in range(r)]
+m2=[list(map(int,input().split())) for i in range(r)]  
+r1=[list(i) for i in zip(*m1)] 
+r2=[list(i) for i in zip(*m2)]
+res=[] 
+for i in range(c): 
+    if r2[i] in r1:  
+        j=i
+        k=r1.index(r2[i]) 
+        break  
+     
+x,y=k,j 
+
+if y>x: 
+    res+=r2
+    k=y-x
+    for j in range(c):  
+        if k>=len(res):  
+          res.append(r1[j]) 
+        else: 
+          for u in range(r): 
+            res[k][u]+=r1[j][u]
+        k+=1
+        
+else: 
+    res+=r1 
+    k=x-y 
+    
+    for j in range(c): 
+      if k>=len(res): 
+        res.append(r2[j])
+      else: 
+        for u in range(r): 
+          res[k][u]+=r2[j][u] 
+      k+=1 
+      
+  
+for i in zip(*res): 
+    print(*i)
