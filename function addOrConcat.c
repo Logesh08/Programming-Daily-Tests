@@ -66,7 +66,7 @@ char* addOrConcat(char *str)
         token = strtok(NULL,"+");
         
     }
-    if(sumSet)sprintf(ret,"%s%d+",ret,sum);
+    if(sumSet)sprintf(ret,"%s%d",ret,sum);
     return ret;
 }
 
