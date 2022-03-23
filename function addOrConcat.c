@@ -44,7 +44,6 @@ char* addOrConcat(char *str)
 {
     char *token = strtok(str,"+");
     char *ret = malloc(99999);
-    char *prv = malloc(99999);
     int sum=0, sumSet = 0,cat=0;
     while(token!=NULL){
         if(token[0]>='0'&&token[0]<='9'){
@@ -62,7 +61,6 @@ char* addOrConcat(char *str)
             sprintf(ret,"%s%s",ret,token);
             cat = 1;
         }
-        strcpy(prv,token);
         token = strtok(NULL,"+");
         
     }
