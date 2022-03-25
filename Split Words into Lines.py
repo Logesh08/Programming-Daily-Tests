@@ -48,3 +48,16 @@
 
 # Output:
 # YES
+
+
+
+
+S, K = input().strip() + ' ', int(input())
+while len(S) > K:
+    SS = S[:K]
+    if SS[-1] == ' ' or S[K] == ' ':
+        S = S[K:].strip()
+    else:
+        print('NO')
+        exit()
+print('YES')
