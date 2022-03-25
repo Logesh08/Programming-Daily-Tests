@@ -48,3 +48,35 @@
 
 // Output:
 // YES
+
+
+
+
+import java.util.*;
+public class Hello {
+
+    public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String s = sc.nextLine();
+		int k = sc.nextInt();
+		boolean yes = true;
+		for (int i = 0; i < s.length(); i+=k) {
+		    while(s.charAt(i) == ' ') {
+		        i++;
+		    }
+		    if (i + k < s.length()) {
+		        if (s.charAt(i + k) == ' ' || s.charAt(i + k - 1) == ' ') {
+		            String sub = s.substring(i, i + k);
+		    }   else {
+		            yes = false;
+		        }
+		    }
+		}
+		if (yes) {
+		    System.out.println("YES");
+		} else {
+		    System.out.println("NO");
+		}
+
+	}
+}
