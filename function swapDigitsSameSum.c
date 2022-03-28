@@ -39,40 +39,59 @@
 
 
 
+// Method 1
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 void swapDigitsSameSum(int *ptr1, int *ptr2)
 {
-    int a = *ptr1;
-    int b = *ptr2;
-    int format = 1;
-    if(b>a){
-        int t=a;
-        a=b;
-        b=t;
-        format = 0;
+    long int x=*ptr1,y=*ptr2,a=10;
+    while(x>a && y>a){
+        a*=10;
+    }long int p=x/a,q=x%a,u=y/a,t=y%a;
+    *ptr1=u*a+q;
+    *ptr2=p*a+t;
+}
+int main()
+{
+    int X, Y;
+    scanf("%d%d", &X, &Y);
+    swapDigitsSameSum(&X, &Y);
+    printf("%d %d", X, Y);
+    return 0;
+} // End of main function
+
+
+
+
+
+//Method 2
+#include <stdio.h>
+#include <stdlib.h>
+void swapDigitsSameSum(int *ptr1, int *ptr2)
+{ 
+    char a[15],b[15],t[15]; 
+    sprintf(a,"%d",*ptr1); 
+    sprintf(b,"%d",*ptr2); 
+    int x=abs(strlen(a)-strlen(b)); 
+    if(*ptr2>*ptr1) 
+    {  
+        strcpy(t,b); 
+        t[x]='\0'; 
+        strcat(t,a); 
+        sprintf(b,"%s",b+x); 
+        *ptr1=atoi(t); 
+        *ptr2=atoi(b);
+    }  
+    else 
+    {  
+        strcpy(t,a); 
+        t[x]='\0'; 
+        strcat(t,b); 
+        sprintf(a,"%s",a+x);
+        *ptr1=atoi(a);   
+        *ptr2=atoi(t);
     }
-    char A[999999];
-    char B[999999];
-    sprintf(A,"%d",a);
-    sprintf(B,"%d",b);
-    int diff = strlen(A) - strlen(B);strcpy(B,"");
-    for(int i=0;i<diff;i++){
-        sprintf(B,"%c%s",A[i],B);
-    }
-    sprintf(B,"%s%d",B,b);
-    strcpy(A,&A[diff]);
-    a = atoi(A);
-    b = atoi(B);
-    if(format==0){
-    *ptr1 = b;
-    *ptr2 = a;
-    }else{
-    *ptr1 = a;
-    *ptr2 = b;
-        
-    }
+
 } // End of swapDigitsSameSum function
 int main()
 {
