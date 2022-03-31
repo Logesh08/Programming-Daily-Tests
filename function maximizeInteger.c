@@ -42,7 +42,26 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
+void maximizeInteger(int M, int arr1[M], int N, int arr2[N])
+{
+    int i,j;
+    for(i=0;i<N;i++){
+        for(j=i+1;j<N;j++){
+            if(arr2[i]<arr2[j]){
+                int t = arr2[j];
+                arr2[j] = arr2[i];
+                arr2[i] = t;
+            }
+        }
+    }
+    int ind = 0;
+    for(i=0;i<M;i++){
+        if(arr1[i]<arr2[ind]){
+            arr1[i] = arr2[ind++];
+            if(ind==N) break;
+        }
+    }
+}
 int main()
 {
     int M, N;
