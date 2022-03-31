@@ -60,3 +60,26 @@
 
 
 
+n=int(input())
+l=[input().strip() for i in range(n)]
+k=int(input())
+t=""
+while True:
+    for i in l:
+        if i!="":
+            break
+    else:
+        break 
+    for i in range(n):
+        if len(l[i])>=k:
+            if i%2==0:
+                t+=l[i][0:k]
+                l[i]=l[i][k:]
+            else:
+                t+=l[i][-k:]
+                l[i]=l[i][0:len(l[i])-k]
+        else:
+            t+=l[i]
+            l[i]="" 
+            k+=1 
+print(t) 
