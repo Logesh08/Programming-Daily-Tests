@@ -64,7 +64,7 @@
 
 
 
-
+# Method 1
 n,m=map(int,input().split())
 b=[list(map(int,input().split())) for i in range(n)]
 v=int(input())
@@ -84,3 +84,31 @@ for i in range(n):
         jj+=1
 for i in c:
     print(*i[::-1])
+
+
+
+
+
+
+
+
+
+# Method 2
+r,c=map(int,input().split())
+mat=[list(map(int,input().split())) for i in range(r)]
+nthcol=int(input())
+currcol=nthcol-2 
+ans=[[] for i in range(r)] 
+for col in range(nthcol-1,c):
+    for row in range(0,r):
+        if currcol>=0:
+            ans[row].insert(0,mat[row][currcol]+mat[row][col]) 
+        else:
+            ans[row].insert(0,mat[row][col])
+    currcol-=1 
+for col in range(currcol,-1,-1):
+    for row in range(0,r):
+        ans[row].insert(0,mat[row][col])
+
+for i in ans:
+    print(*i)
