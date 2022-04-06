@@ -59,3 +59,28 @@
 # 2 8 6 4 2
 # 50 40 30 20 10
 
+
+
+
+
+
+
+n,m=map(int,input().split())
+b=[list(map(int,input().split())) for i in range(n)]
+v=int(input())
+c=[]
+for i in range(n):
+    cc=[]
+    for j in range(v-1,m):
+        cc+=[b[i][j]]
+    c+=[cc]
+for i in range(n):
+    jj=0
+    for j in range(v-2,-1,-1):
+        if jj<m-v+1:
+            c[i][jj]+=b[i][j]
+        else:
+            c[i]+=[b[i][j]]
+        jj+=1
+for i in c:
+    print(*i[::-1])
