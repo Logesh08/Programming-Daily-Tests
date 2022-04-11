@@ -115,3 +115,29 @@
 
 
 
+n=int(input())
+arr = [input().split() for _ in range(n)]
+for _ in range(int(input())):
+    selctor = input().strip()
+    querry = input().strip()
+    ind = 1
+    if querry[0]=='A':
+        ind = 1
+    elif querry[0]=='B':
+        ind = 2
+    elif querry[0]=='C':
+        ind = 3
+    concSymbol = querry[1]
+    value = querry[2:]
+    if concSymbol=='=' : concSymbol = '=='
+    Done = False
+    for row in arr:
+        if(eval(row[ind]+concSymbol+value)):
+            if selctor == '*':
+                print(*row)
+            else:
+                words = ['0','A','B','C']
+                print(row[words.index(selctor)])
+            Done = True
+    if not Done:
+        print(-1)
