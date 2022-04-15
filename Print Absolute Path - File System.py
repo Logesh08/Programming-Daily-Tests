@@ -52,3 +52,18 @@
 
 
 
+S = input().split( '\\n' )
+
+printed = False
+for i in range(len(S)):
+    if '.' in S[i]:
+        depth = S[i].count( "\\t" )
+        Addr = ""
+        for j in range( i , -1 , -1):
+            if S[j].count("\\t") == depth:
+                Addr = S[j][ depth*2 : ] + "\\" + Addr
+                depth -= 1
+        printed = True 
+        print( Addr[ : len(Addr)-1 ] )
+if not printed:
+    print( -1 )
