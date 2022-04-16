@@ -65,3 +65,27 @@
 
 
 
+r,c=map(int,input().split())
+mat = [list(map(int,input().split())) for _ in range(r)]
+visited = [[0] * c for _ in range(r)]
+x,y=map(int,input().split())
+x-=1
+y-=1
+while True:
+    try:
+        cur = mat[x][y]
+        visited[x][y]=1
+        if cur>0:
+            if cur%2: y+=1
+            else: x-=1
+        else:
+            if cur%2: y-=1
+            else: x+=1
+        if x<0 or y<0:
+            error()
+        if visited[x][y]==1 :
+            print('YES')
+            break
+    except:
+        print('NO')
+        break
