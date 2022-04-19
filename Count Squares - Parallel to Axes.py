@@ -86,28 +86,44 @@
 
 
 
+# method 1
+x = int(input())
+y = [list(map(int,input().split())) for i in range(x)]
 
-n = int(input())
-cords = [list(map(int,input().split())) for _ in range(n)]
-ans = []
-def findSqares(x,y,formed):
-    if len(formed)==4:
-        if sorted(formed) not in ans:
-            ans.append(sorted(formed))
-        return
-    for i in cords:
-        if i not in formed:
-            if i[0]==x:
-                formed.append(i)
-                findSqares(x,i[1],formed)
-            if i[1]==y:
-                formed.append(i)
-                findSqares(i[0],y,formed)
-            
-    
+t = []
+c = 0
+for i in y:
+    p = [i]
+    for j in range(1, 25):
+        p.append([i[0]+j, i[1]])
+        p.append([i[0]+j, i[1]-j])
+        p.append([i[0], i[1]-j])
+        d = True
+        for k in p:
+            if k not in y:
+                d = False
+        if d and sorted(p) not in t:
+            # if x==12:
+            #     print(p)
+            t.append(sorted(p))
+            c += 1
+        p=[i]
+print(c)
+
+
+
+
+
+
+# method 2
+n=int(input())
+l=sorted(set([tuple(map(int,input().split())) for i in range(n)]))
+n=len(l)
+o=set()
 for i in range(n):
-    cur = cords[i]
-    x,y = cur[0], cur[1]
-    findSqares(x,y,[cur])
-    
-print(len(ans))
+    for j in range(i+1,n):
+        if l[i][0]==l[j][0]:
+            t=l[j][1]-l[i][1]
+            if (l[i][0]+t,l[i][1]) in l and (l[i][0]+t,l[i][1]+t) in l:
+                o.add(tuple(l[i]+l[j]))
+print(len(o))
