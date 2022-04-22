@@ -76,27 +76,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
-void zipArrays(int count, ...)
-{
-    va_list args;
-    va_start(args,count);
-    int min=999999,x;
-    for(int i=0;i<count;i++){
-        if(i%2==0){
-            x = va_arg(args,int);
-            min = x < min? x: min;
+
+void zipArrays(int count, ...) {
+    int size1, size2, size3;
+    int *arr1, *arr2, *arr3;
+    va_list list;
+    va_start(list, count);
+    size1 = va_arg(list, int);
+    arr1 = va_arg(list, int *);
+    size2 = va_arg(list, int);
+    arr2 = va_arg(list, int *);
+    if (count == 6) {
+        size3 = va_arg(list, int);
+        arr3 = va_arg(list, int *);
+        int minSize = fmin(size1, fmin(size2, size3));
+        for (int index = 0; index < minSize; index ++) {
+            printf("%d %d %d\n", arr1[index], arr2[index], arr3[index]);
         }
-        else{
-            int *p = va_arg(args,int *);
-            for(int j=0;j<x;j++){
-                printf("%d ",p[j]);
-                
-            }
-        }
-        
     }
-    printf("\n");
+    else {
+        int minSize = fmin(size1, size2);
+        for (int index = 0; index < minSize; index ++) {
+            printf("%d %d\n", arr1[index], arr2[index]);
+        }
+    }
 }
+
 int main()
 {
     int A, B, C;
