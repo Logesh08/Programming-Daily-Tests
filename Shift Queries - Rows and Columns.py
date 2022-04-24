@@ -98,24 +98,3 @@
 
 
 
-
-
-
-r,c = map(int,input().split())
-mat = [input().split() for _ in range(r)]
-q = int(input())
-for _ in range(q):
-    print('Query',_+1)
-    x,k,c = input().split()
-    x = int(x) - 1
-    k = int(k)
-    if c == 'r':
-        for __ in range(k):
-            mat[x] = [mat[x][-1]]+mat[x][:-1]
-    else:
-        for __ in range(k):
-            b = mat[-1][x]
-            for i in range(1,r)[::-1]:
-                mat[i][x] = mat[i-1][x]
-            mat[0][x] = b
-    for row in mat: print(*row)
