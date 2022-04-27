@@ -47,4 +47,4 @@
 
 
 s,base = input().split()
-print(int(s,int(base)));
+print(int(s,int(base)))
