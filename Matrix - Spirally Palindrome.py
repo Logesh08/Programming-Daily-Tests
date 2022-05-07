@@ -111,3 +111,37 @@ if not visited[RR//2][CC//2]:
     t+=mat[RR//2] [CC//2]
 print('YES' if t==t[::-1] else 'NO')
  
+
+
+
+
+
+
+
+ ## Other solution:
+R,C=map(int,input().split())
+matrix=[input().split() for row in range(R)]
+stRow,stCol,endRow,endCol=0,0,R-1,C-1
+S=""
+while stRow<endRow and stCol<endCol:
+    for col in range(stCol,endCol+1):
+        S+=matrix[stRow][col]
+    for row in range(stRow+1,endRow+1):
+        S+=matrix[row][endCol]
+    for col in range(endCol-1,stCol-1,-1):
+        S+=matrix[endRow][col]
+    for row in range(endRow-1,stRow,-1):
+        S+=matrix[row][stCol]
+    stRow+=1 
+    endRow-=1 
+    stCol+=1 
+    endCol-=1
+if stCol==endCol and stRow!=endRow:
+    for row in range(stRow,endRow+1):
+        S+=matrix[row][stCol]
+elif stRow==endRow and stCol!=endCol:
+    for col in range(stCol,endCol+1):
+        S+=matrix[stRow][col]
+elif R==C and R%2!=0:
+    S+=matrix[R//2][C//2]
+print("YES" if S==S[::-1] else "NO")
