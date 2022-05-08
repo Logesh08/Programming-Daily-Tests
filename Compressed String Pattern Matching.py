@@ -54,12 +54,12 @@
 
 import re
 s = input().strip().lower()
-patten = re.split('(\d+)',input().strip().lower()) 
-if patten[0] == '': patten.pop(0)
-for i in range(0,len(patten),3):
-    start = patten[i]
-    count = int(patten[i+1])
-    end = patten[i+2]
+pattern = re.split('(\d+)',input().strip().lower()) 
+if pattern[0] == '': pattern.pop(0)
+for i in range(0,len(pattern),3):
+    start = pattern[i]
+    count = int(pattern[i+1])
+    end = pattern[i+2]
     if (len(s) - s[::-1].index(end) - s.index(start)  -2 ) != count:
         print('NO',count)
         exit()
