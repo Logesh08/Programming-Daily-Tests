@@ -1,5 +1,7 @@
 # Super Digit Integer
-# The program must accept an integer N as the input. The program must print YES if the given integer N is a super digit integer. Else the program must print NO as the output.
+# The program must accept an integer N as the input. 
+# The program must print YES if the given integer N is a super digit integer. 
+# Else the program must print NO as the output.
 
 # A super digit integer is an integer N such that D*(ND) contains a substring made of D digits D (where 2 <= D <= 9).
 
