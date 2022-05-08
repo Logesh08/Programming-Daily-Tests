@@ -50,7 +50,7 @@
 
 n = int(input())
 for i in range(2,10):
-    if str(i)*2 in str(i*(n**i)) :
+    if str(i)*i in str(i*(n**i)) :
         print('YES')
         exit()
 print('NO')
