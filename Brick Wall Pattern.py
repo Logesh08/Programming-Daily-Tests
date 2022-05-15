@@ -89,9 +89,28 @@
 
 
 
+## Working
+L , H  = map(int,input().split())
+R , C = map(int,input().split())
+currRow = ""
+for col in range(C):
+    if col%2 == 0:
+        currRow += "*"*L
+    else:
+        currRow += "#"*L
+result = []
+shif = L//2
+add = ["#"*shif,"#"*shif,"*"*shif,"*"*shif]
+index = 0
+for row in range(R):
+    for height in range(H):
+        result.append(currRow)
+    currRow = add[index%4]+currRow[:-shif]
+    index += 1
+for row in result[::-1]:
+    print(*row,sep="")
 
-
-
+## Unworking
 l,h = map(int,input().split())
 r,c = map(int,input().split())
 t1='*'*(l//2 )
