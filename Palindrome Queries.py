@@ -40,3 +40,29 @@
 # adccbaccab
 # adcabcccba
 # abccdccbaa
+
+
+
+
+
+
+
+
+
+s=input().strip()
+q=int(input())
+for i in range(q):
+    l,r=map(int,input().split())
+    y=s[l-1:r]
+    x=sorted(set(y))
+    z=''
+    for i in x:
+        z+=i*(y.count(i)//2)
+    p=z[::-1]
+    for i in x:
+        if y.count(i)%2!=0:
+            z+=i
+    z+=p
+    if z==z[::-1]:
+        s=s[:l-1]+z+s[r:]
+    print(s)
