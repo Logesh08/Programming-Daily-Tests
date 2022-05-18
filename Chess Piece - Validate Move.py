@@ -68,20 +68,21 @@
 
 
 
-peice = input().strip()
-def convert(x):
-    return (ord(x)-97)
-A,B = input().split()
-a,b = convert(A[0]),int(A[1])
-x,y = convert(B[0]),int(B[1])
-yes = 0
-if peice == 'B':
-    if abs(x-a)==abs(y-b) or abs(x-a) == abs(b-y):
-        yes = 1
-elif peice == 'R':
-    if a==x or b==y:
-        yes = 1
+p=input().strip()
+x,y=input().split()
+x1,x2='abcdefgh'.index(x[0]),int(x[1])
+y1,y2='abcdefgh'.index(y[0]),int(y[1])
+f=0
+if p=='R':
+    if x1==y1 or x2==y2:
+        f=1
+elif p=='B':
+    if abs(x1-y1)==abs(x2-y2):
+        f=1
 else:
-    if (a==x+1 and b==y+2) or (a==x-1 and b==y-2) or (b==y+1 and a==x+2) or (b==y-1 and a==x-2):
-        yes = 1
-print('Yes' if yes else 'No')
+    if sorted([abs(x1-y1),abs(x2-y2)])==[1,2]:
+        f=1
+if f:
+    print("Yes")
+else:
+    print("No")
