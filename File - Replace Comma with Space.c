@@ -42,3 +42,49 @@
 // 75,77,67,6,94
 // 49
 // 49,40,12,39,28,7
+
+
+
+
+
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+void replaceCommaWithSpace(char *fileName)
+{
+    FILE * fp = fopen(fileName,"r");
+    char out[10000];
+    int ind = 0;char ch;
+    while((ch=fgetc(fp))!=EOF){
+        if(ch==',')ch = ' ';
+        out[ind++] = ch;
+    }
+    out[ind] = 0;
+    fclose(fp);
+    fp = fopen(fileName,"w");
+    fprintf(fp,"%s",out);
+    fclose(fp);
+}
+void printFileContent(char *fileName)
+{
+    FILE *fp = fopen(fileName, "r");
+    char ch;
+    while((ch = fgetc(fp)) != EOF)
+    {
+        printf("%c", ch);
+    }
+    fclose(fp);
+}
+
+int main()
+{
+    char fileName[51];
+    scanf("%s", fileName);
+    replaceCommaWithSpace(fileName);
+    printf("%s:\n", fileName);
+    printFileContent(fileName);
+    return 0;
+}
