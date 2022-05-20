@@ -51,3 +51,31 @@
 
 # Output:
 # aabbbbc
+
+
+
+
+
+
+
+
+
+
+
+S=input().strip();a="";A=[];P,N="",""
+for i in range(len(S)):
+    if(S[i] in "+-"):
+        A+=[a];a=S[i]
+    else:a+=S[i]
+    if(i==len(S)-1):A+=[a]
+for i in A:
+    if('-' in i):N+=i[1:]
+    else:P+=i.replace('+',"")
+V=N    
+for j in N:
+    if(j in P):
+        P=P.replace(j,"",1);V=V.replace(j,"",1)
+a,b="".join(sorted(P)),"".join(sorted(V))        
+if(len(a) and len(b)):print(f"{a}-{b}") 
+elif(len(a)):print(a)
+else:print('-'+b)
