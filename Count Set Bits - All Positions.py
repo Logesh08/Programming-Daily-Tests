@@ -56,7 +56,6 @@ for i in arr:
     nxt.append(b)
     if len(b)>m:
         m = len(b)
-        maxVal = b
 arr = []
 for i in nxt:
     arr.append(i.zfill(m))
