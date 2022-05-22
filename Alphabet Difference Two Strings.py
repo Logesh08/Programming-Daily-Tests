@@ -26,3 +26,17 @@
 
 # Output:
 # No
+
+
+
+
+
+
+s1=input().strip()
+s2=input().strip()
+for i in range(len(s1)):
+    if abs(ord(s1[i])-ord(s2[i]))>1:
+        print("No")
+        break 
+else:
+    print("Yes")
