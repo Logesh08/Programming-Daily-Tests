@@ -37,3 +37,27 @@
 
 # Output:
 # 50
+
+
+
+
+
+
+
+
+r, c = map(int, input().split())
+mat = [list(map(int, input().split())) for row in range(r)]
+row, col = 0, 1
+total = mat[0][0]
+while col < c:
+    maxVal = 0
+    pos = row
+    for itr in [-1, 0, 1]:
+        if 0 <= row + itr < r:
+            if mat[row + itr][col] > maxVal:
+                maxVal = mat[row + itr][col]
+                pos = itr
+    total += maxVal 
+    row += pos 
+    col += 1 
+print(total)
