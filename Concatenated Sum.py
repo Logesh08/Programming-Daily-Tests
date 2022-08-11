@@ -43,3 +43,11 @@
 # Y -> 1025100
 # The sum of X and Y is 1049911.
 # Hence the output is 1049911
+
+
+
+
+M,N=map(int,input().split())
+num1="".join(input().split())
+num2="".join(input().split())
+print(int(num1)+int(num2))
