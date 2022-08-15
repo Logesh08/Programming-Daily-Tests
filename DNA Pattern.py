@@ -53,3 +53,22 @@
 # -*----*
 # --*--*
 # ---**
+
+
+
+
+
+
+n=int(input())
+l=[]
+x=n-2
+y=0
+for i in range(n//2):
+    l.append("-"*y+"*"+"-"*x+"*")
+    x-=2
+    y+=1
+
+l=l[::-1]+l[1:]
+print(l[0])
+for i in range(n//2):
+    print(*l[1:],sep="\n")
